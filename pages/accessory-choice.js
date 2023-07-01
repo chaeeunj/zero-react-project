@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import BottomButton from '../src/components/BottomButton';
+import RadioGroup from '../src/components/RadioGroup';
+import Radio from '../src/components/Radio';
 
 export default function accessoryChoice() {
   const router = useRouter();
   const [selectedAccessory, setSelectedAccessory] = useState('');
 
-  const onChangeHandler = (e) => {
-    setSelectedAccessory(e.target.value);
-  };
+  // const onChangeHandler = (e) => {
+  //   setSelectedAccessory(e.target.value);
+  // };
 
   console.log(selectedAccessory);
 
@@ -22,7 +24,7 @@ export default function accessoryChoice() {
         </div>
 
         {/* 라디오 버튼 추가 */}
-        <label>
+        {/* <label>
           <input
             type="radio"
             name="accessory"
@@ -41,7 +43,23 @@ export default function accessoryChoice() {
             onChange={onChangeHandler}
           />
           keyboard
-        </label>
+        </label> */}
+        <RadioGroup
+          name="accessory"
+          onChange={(state) => setSelectedAccessory(state)}>
+          <Radio
+            id="monitor"
+            name="accessory"
+            value="monitor"
+            label="monitor"
+          />
+          <Radio
+            id="keyboard"
+            name="accessory"
+            value="keyboard"
+            label="keyboard"
+          />
+        </RadioGroup>
 
         <BottomButton onClick={() => router.push('/complete')}>
           완료 화면으로 넘어가기
