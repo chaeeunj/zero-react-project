@@ -12,6 +12,11 @@ export default function accessoryChoice() {
   //   setSelectedAccessory(e.target.value);
   // };
 
+  const goNextPage = () => {
+    localStorage.setItem('selected_accessory', selectedAccessory);
+    router.push('/complete');
+  };
+
   console.log(selectedAccessory);
 
   return (
@@ -61,9 +66,7 @@ export default function accessoryChoice() {
           />
         </RadioGroup>
 
-        <BottomButton onClick={() => router.push('/complete')}>
-          완료 화면으로 넘어가기
-        </BottomButton>
+        <BottomButton onClick={goNextPage}>완료 화면으로 넘어가기</BottomButton>
       </div>
     </div>
   );

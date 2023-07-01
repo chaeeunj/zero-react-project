@@ -15,6 +15,12 @@ export default function start() {
 
     fetch();
   }, []);
+
+  const goNextPage = () => {
+    localStorage.setItem('name', name);
+    router.push('/device-choice');
+  };
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -22,7 +28,7 @@ export default function start() {
           {name}님, 입사를 축하드립니다! 원하시는 개발 장비를 선택해주세요.
         </h3>
       </div>
-      <BottomButton onClick={() => router.push('/device-choice')}>
+      <BottomButton onClick={goNextPage}>
         장비 선택 화면으로 넘어가기
       </BottomButton>
     </div>
